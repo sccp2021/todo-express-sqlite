@@ -54,8 +54,14 @@ app.get("/tasks/:id", (req, res) => {
 app.post("/tasks", (req, res) => {
     db.serialize(() => {
         const task = req.body
-        db.run("INSERT INTO tasks (content) VALUES (?)", task.content, () => {
-            res.end()
+        db.run("INSERT INTO tasks (content) VALUES (?)", task.content, (err) => {
+            if (err !== null) {
+                console.log(err)
+                res.statusCode = 500
+                res.json(err)
+            } else {
+                res.end()
+            }
         })
     })
 })
@@ -64,8 +70,14 @@ app.post("/tasks", (req, res) => {
 app.delete("/tasks/:id", (req, res) => {
     const id = Number(req.params["id"])
     db.serialize(() => {
-        db.run("DELETE FROM tasks WHERE id = ?", id, () => {
-            res.end()
+        db.run("DELETE FROM tasks WHERE id = ?", id, (err) => {
+            if (err !== null) {
+                console.log(err)
+                res.statusCode = 500
+                res.json(err)
+            } else {
+                res.end()
+            }
         })
     })
 })
