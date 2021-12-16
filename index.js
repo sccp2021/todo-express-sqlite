@@ -2,10 +2,11 @@ const express = require("express")
 const sqlite3 = require("sqlite3")
 
 const app = express()
-app.use(express.json())
+app.use(express.json()) // 今回はTodoのデータをJsonでやりとりするため
 
-const db = new sqlite3.Database("./todo.db")
+const db = new sqlite3.Database("./todo.db") // sqlite3コマンドで作成したDBの名前を指定する
 
+// タスク一覧の取得
 app.get("/tasks", (req, res) => {
     db.serialize(() => {
         db.all("SELECT * FROM tasks;", (err, rows) => {
@@ -26,6 +27,7 @@ app.get("/tasks", (req, res) => {
     })
 })
 
+// タスクの取得
 app.get("/tasks/:id", (req, res) => {
     const id = Number(req.params["id"])
     db.serialize(() => {
@@ -48,6 +50,7 @@ app.get("/tasks/:id", (req, res) => {
     })
 })
 
+// タスクの追加
 app.post("/tasks", (req, res) => {
     db.serialize(() => {
         const task = req.body
@@ -57,6 +60,7 @@ app.post("/tasks", (req, res) => {
     })
 })
 
+// タスクの削除
 app.delete("/tasks/:id", (req, res) => {
     const id = Number(req.params["id"])
     db.serialize(() => {
