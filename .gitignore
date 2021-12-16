@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,linux,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,macos,linux,windows
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,visualstudiocode,macos,linux,windows
 
 ### Linux ###
 *~
@@ -194,4 +194,32 @@ dist
 # Support for Project snippet scope
 !.vscode/*.code-snippets
 
-# End of https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,macos,linux,windows
+
+todo.db
